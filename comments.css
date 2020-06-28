@@ -1,0 +1,32 @@
+/* portfolio style*/
+.portfolio-items-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* so theres gonna be three columns, each full sized (100)*/
+}
+
+.portfolio-item-wrapper{
+    position: relative;
+    /*required to have nested absolute positions inside of it (img-text-wrapper*/
+}
+
+.portfolio-img-background{
+    height: 350px;
+    width: 100%; /*width adjusts automatically*/
+    background-size: cover;/*sizes (crops) the images to fit their size*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img-text-wrapper{
+    position: absolute; /*needs to be in a parent element with relative position*/
+    top:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /*l-r*/
+    align-items: center;/*top to bottom*/
+    height: 100%;
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+}
