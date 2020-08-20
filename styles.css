@@ -17,20 +17,30 @@ body{
     font-family: sourceSans;
     src: url(Source_Sans_Pro/SourceSansPro-Regular.ttf);
   }
+
+
 .section-title{
-    font-size: 25px;
-    font-family: sourceSans ;
-    margin-left: 45%;
-    margin-top: 50px;
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 48%;
+    margin-top: 5%;
 }
+.section-underline{
+    background-color: rgb(255, 221, 30);
+    height:3px;
+    width:70px;
+    margin-left: 49%;
+    margin-top:3px ;
+
+}
+
 /*about me section*/
 .me-description-wrapper{
     display: inline-flex;
     padding: 50px;
     background-color:#fffdef;
-    margin-left: 200px;
-    margin-right: 200px;
-
+    margin-left: 100px;
+    margin-right: 100px;
 }
 .about-me-left{
     margin-top: 100px;
@@ -39,16 +49,24 @@ body{
 .myName{
     font-size: 50px;
     font-family: serifthing;
+    text-align: right;
+    padding-right:10%;
 }
 .greeting{
     margin-top: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+    text-align: right;
+    padding-right:10%;
 }
 .small-underline{
-    background-color: rgb(255, 221, 30);
+    /*background-color: rgb(255, 221, 30);*/
+    background: linear-gradient(110deg, rgb(255, 221, 30) 70%, #fffdef 60%);
     height:3px;
-    width:150px;
+    width:200px;
+   
+    float:right;
+    padding-block: 01px;
 }
 .me-pic{
     height: 500px;
@@ -58,7 +76,7 @@ body{
 }
 
 
-
+/*
 .main-page{
     position: relative;
 }
@@ -71,24 +89,25 @@ body{
 
 .short-intro{
     display: block;
-    position: absolute; /*needs to be in a parent element with relative position*/
+    position: absolute; /*needs to be in a parent element with relative position
     top:0;
     margin-left: 50%;
     margin-top: 15%;
-    justify-content: center; /*l-r*/
-    align-items: center;/*top to bottom*/
+    justify-content: center; /*l-r
+    align-items: center;/*top to bottom
     height: 100%;
     text-align: center;
     padding-right: 100px;
     font-size: 50px;
     font-family: serifthing;
 }
+*/
 /* nav style*/
 .nav-wrapper{
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    border-bottom: 1px solid transparent;
+    border-bottom: 0.5px solid transparent;
     border-color: rgb(212, 212, 212);
 }
 
@@ -97,13 +116,13 @@ body{
 }
 
 .nav-wrapper > .right-side > div{
-    margin-right: 20px;
-    font-size: 0.9em;
+    margin-right: 25px;
+    font-size: 1.1em;
     text-transform: uppercase;
     font-family: sourceSans;
 }
 .left-side{
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-family: sourceSans;
 }
 .nav-link-wrapper{
