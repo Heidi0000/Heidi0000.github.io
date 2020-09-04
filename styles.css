@@ -38,7 +38,7 @@ body{
 .me-description-wrapper{
     display: inline-flex;
     padding: 50px;
-    background-color:#fffdef;
+   
     margin-left: 100px;
     margin-right: 100px;
 }
@@ -109,6 +109,7 @@ body{
     padding: 20px;
     border-bottom: 0.5px solid transparent;
     border-color: rgb(212, 212, 212);
+    background-color:#fffdef ;
 }
 
 .right-side{
@@ -160,4 +161,71 @@ body{
     overflow: hidden;
     object-fit: contain;
 
+}
+
+
+.proj-wrapper-grid *{
+    box-sizing: border-box;
+    font-family: sourceSans;
+    margin:0;
+    padding:0;
+
+}
+.proj-wrapper-grid{
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr);
+    justify-content: center;
+    grid-gap: 2rem;
+    margin:3rem 15rem;
+}
+.proj-container{
+    box-shadow: 0px 2px 8px 0px  #37474f;
+    text-align: center;
+    border-radius: 1rem;
+    position:relative;
+    overflow: hidden;
+    background-color: white;
+    height:20rem;
+   
+}
+
+.proj-pic>img{
+    position: absolute;
+    /*object-fit: cover;*/
+    
+    width:100%;
+    height:50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.proj-name{
+    font-size: 1.5rem;
+    font-weight:bold;
+}
+.proj-desc{
+    margin: 1rem 2rem;
+    font-size:0.9rem;
+}
+.proj-btn{
+    width:100%;
+    padding:1rem;
+    border:none;
+    font-size:1rem;
+    font-weight:bold;
+    color:black;
+    background-color: gold;
+}
+
+/*tablet view*/
+@media screen and (min-width:500px){
+    .proj-wrapper-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/*desktop view*/
+@media screen and (min-width:760px){
+    .proj-wrapper-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
