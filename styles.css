@@ -177,7 +177,7 @@ body{
 .proj-wrapper-grid{
     display: grid;
    /* grid-template-columns: minmax(600px, 1fr);*/
-    grid-template-columns: 1fr;
+   grid-template-columns: repeat(2, 1fr);
     justify-content: center;
     grid-gap: 5rem;
     margin:3rem 18%;
@@ -252,13 +252,13 @@ body{
 
 
 /*tablet view*/
-@media screen and (min-width:768px) and (max-device-width:1024px){
+@media screen and (min-width:350px) {
     .proj-wrapper-grid{
         grid-template-columns: repeat(2, 1fr);
     }
 }
 /*desktop view*/
-@media screen and (min-width:1025px){
+@media screen and (min-width:801px){
     .proj-wrapper-grid{
         grid-template-columns: repeat(3, 1fr);
     }
