@@ -5,7 +5,7 @@ body{
 }
 .container{
     display: grid;
-    background-color:#fffdef;
+    background-color:white;/*#fffdef;*/
     grid-template-columns: 1fr;
     /* column maker... make it take up 1 fractional unit (100%)*/
 }
@@ -177,7 +177,7 @@ body{
 .proj-wrapper-grid{
     display: grid;
    /* grid-template-columns: minmax(600px, 1fr);*/
-   grid-template-columns: repeat(2, 1fr);
+   grid-template-columns: repeat(1, 1fr);
     justify-content: center;
     grid-gap: 5rem;
     margin:3rem 18%;
@@ -250,16 +250,118 @@ body{
    
 }
 
-
-/*tablet view*/
-@media screen and (min-width:350px) {
-    .proj-wrapper-grid{
-        grid-template-columns: repeat(2, 1fr);
-    }
+/*timeline*/
+.timeline-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-/*desktop view*/
-@media screen and (min-width:801px){
+.timeline-container{
+    font-family: sourceSans;
+    min-height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 100px 0;
+}
+
+.timeline{
+    width:80%;
+    height: auto;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+.timeline ul{
+    list-style: none; /*remove the bullet points*/
+}
+.timeline ul li{
+    padding: 20px;
+    background-color: #FEF1AB;
+    color: black;
+    border-radius: 10px;
+    margin-bottom: 10px; /*between each element*/
+}
+.timeline ul li:last-child{
+    margin-bottom:0; /*selecting the last timeline element since it doesn't need padding on the bottom*/
+}
+.timeline-content h1{
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+.timelien-content p{
+    font-size: 16px;
+    line-height: 30px;
+    font-weight:300;
+}
+
+@media only screen and (min-width: 768px){
     .proj-wrapper-grid{
         grid-template-columns: repeat(3, 1fr);
     }
+    .timeline::before{
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 2px;
+        left: 50%;
+        transform: translateX(-50%); /*to make it perfectly in the middle*/
+        background-color: rgb(175, 170, 170);
+    }
+    .timeline ul li{
+        width: 50%;
+        margin-bottom: 50px;
+        position: relative;
+    }
+    .timeline ul li:nth-child(odd){
+        float: left;
+        clear: right;
+        transform : translateX(-30px);
+        border-radius: 10px 0 10px 10px;
+    }
+    .timeline ul li:nth-child(even){
+        float: right;
+        clear:left;
+        transform : translateX(30px);
+        border-radius: 0 10px 10px 10px;
+
+    }
+    .timeline ul li::after{
+        content: '';
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background-color: rgb(175, 170, 170);
+        border-radius: 50%; /*makes it a circle*/
+        top: 0;
+    }
+    .timeline ul li:nth-child(odd)::after{
+        right: -30px; /*to account for the 30 px we moved the elements*/ 
+        transform : translate(50%, -50%);
+    }
+    .timeline ul li:nth-child(even)::after{
+        left: -30px; 
+        transform : translate(-50%, -50%);
+    }
+    .timeline ul li:hover:after{ /*the after is the dot*/
+        background-color: #F1D851;
+        ;
+    }
+    .timeline ul li:hover{
+        box-shadow: 2px 4px 8px 2px  #c4d1d6;
+        animation-name: fadeUp;
+        animation-duration: 0.3s;
+        animation-iteration-count:1;
+        animation-fill-mode: forwards;
+    }
 }
+}
+
+
+
+
+
+
+
