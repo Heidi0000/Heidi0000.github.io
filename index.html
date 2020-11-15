@@ -4,6 +4,12 @@
         <meta charset="utf-8" />
         <title>Page Title</title>
         <link rel="stylesheet" href="styles.css">
+        <script>
+            function scrollFunction(){
+                var elmnt = document.getElementsByClassName("timeline-container");
+                elmnt.scrollIntoView();
+            }
+        </script>
     </head>
 
     <body>
@@ -21,7 +27,8 @@
                         <a href="index.html">About</a>
                     </div>
                     <div class="nav-link-wrapper">
-                        <a href="project1.html">Projects</a>
+                        <!--<a href="timeline-containter">Projects</a>-->
+                        <button id="some" onclick="scrollFunction()">Projects</button>
                     </div>
                     <div class="nav-link-wrapper">
                         <a href="project1.html">Experience</a>
