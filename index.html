@@ -5,8 +5,8 @@
         <title>Page Title</title>
         <link rel="stylesheet" href="styles.css">
         <script>
-            function scrollFunction(){
-                var elmnt = document.getElementsByClassName("timeline-container");
+            function scrollFunction(thing){
+                var elmnt = document.getElementsByClassName(thing)[0];
                 elmnt.scrollIntoView();
             }
         </script>
@@ -24,17 +24,18 @@
 
                 <div class="right-side">
                     <div class="nav-link-wrapper">
-                        <a href="index.html">About</a>
+                        <button onclick="scrollFunction('about-me-left')">About</a>
                     </div>
                     <div class="nav-link-wrapper">
                         <!--<a href="timeline-containter">Projects</a>-->
-                        <button id="some" onclick="scrollFunction()">Projects</button>
+                        <button onclick="scrollFunction('proj-wrapper-grid')">Projects</button>
                     </div>
                     <div class="nav-link-wrapper">
-                        <a href="project1.html">Experience</a>
+                        <!-- <a href="project1.html">Experience</a> -->
+                        <button onclick="scrollFunction('timeline-container')">Experiences</button>
                     </div>
                     <div class="nav-link-wrapper">
-                        <a href="project1.html">Contact</a>
+                        <button onclick="scrollFunction('timeline-container')">Contact</a>
                     </div>
                     <div class="nav-link-wrapper">
                         <a> | </a>
@@ -91,9 +92,7 @@
                     <h1 class="proj-name">project1</h1>
                     <p class="proj-desc">descriptionnnn</p>
                     <button class="proj-btn">View Project</button>
-                </div>
-
-                
+                </div>       
             </div>
             <!-- experience-->
             <p class="title-class">
@@ -109,6 +108,7 @@
                     <ul>
                         <li>
                             <div class="timeline-content">
+                                <h3 class="date">Date</h3>
                                 <h1>work 1</h1>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora ab laudantium voluptatibus aut eos placeat laborum, quibusdam exercitationem labore
                                     se se 
@@ -117,6 +117,7 @@
                         </li>
                         <li>
                             <div class="timeline-content">
+                                <h3 class="date">Date2s</h3>
                                 <h1>work 2</h1>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora ab laudantium voluptatibus aut eos placeat laborum, quibusdam exercitationem labore
                                 </p>
@@ -124,6 +125,7 @@
                         </li>
                         <li>
                             <div class="timeline-content">
+                                <h1 class="date">Date</h1>
                                 <h1>work 3</h1>
                                 <p>somesomesoemsom soeesomesmes eosmoesmseomoes mesomoes
                                     se se 
@@ -132,6 +134,7 @@
                         </li>
                         <li>
                             <div class="timeline-content">
+                                <h1 class="date">Date</h1>
                                 <h1>work 4</h1>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora ab laudantium voluptatibus aut eos placeat laborum, quibusdam exercitationem labore
                                 </p>
