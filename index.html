@@ -5,9 +5,9 @@
         <title>Page Title</title>
         <link rel="stylesheet" href="styles.css">
         <script>
-            function scrollFunction(thing){
-                var elmnt = document.getElementsByClassName(thing)[0];
-                elmnt.scrollIntoView();
+            function scrollFunction(thing, n){
+                var elmnt = document.getElementsByClassName(thing)[n];
+                elmnt.scrollIntoView({behavior: 'smooth'});
             }
         </script>
     </head>
@@ -24,29 +24,30 @@
 
                 <div class="right-side">
                     <div class="nav-link-wrapper">
-                        <button onclick="scrollFunction('about-me-left')">About</a>
+                        <button onclick="scrollFunction('me-description-wrapper', 0)">About</a>
                     </div>
                     <div class="nav-link-wrapper">
                         <!--<a href="timeline-containter">Projects</a>-->
-                        <button onclick="scrollFunction('proj-wrapper-grid')">Projects</button>
+                        <button onclick="scrollFunction('title-class', 0)">Projects</button>
                     </div>
                     <div class="nav-link-wrapper">
                         <!-- <a href="project1.html">Experience</a> -->
-                        <button onclick="scrollFunction('timeline-container')">Experiences</button>
+                        <button onclick="scrollFunction('title-class', 1)">Experiences</button>
                     </div>
                     <div class="nav-link-wrapper">
                         <button onclick="scrollFunction('timeline-container')">Contact</a>
                     </div>
-                    <div class="nav-link-wrapper">
+                    <!-- <div class="nav-link-wrapper">
                         <a> | </a>
-                    </div>
-                    <div class="nav-link-wrapper-resume">
-                        <a href="images/2b_resume_robotics.pdf" download >Resume    </a>
-                        <img src="images/direct-download.png" alt="Project 1" style="object-fit: cover;width:1.1rem; height:1.1rem">
+                    </div> -->
+                    <div class="nav-link-wrapper">
+                        <button><a href="images/2b_resume_robotics.pdf" download >Resume</a></button>
+                        <!-- <img src="images/direct-download.png" alt="Project 1" style="object-fit: cover;width:1.1rem; height:1.1rem; position: relative;"> -->
                     </div>
 
                 </div>
             </div>
+            
 
             <div class="me-description-wrapper">
                 <div class="about-me-left">
@@ -77,7 +78,8 @@
             <div class="proj-wrapper-grid">
                 <div class="proj-container">
                     <img src="images/sleepyBilly.jpg" alt="Project 1" style="object-fit: cover;width:100%; height:40%">
-                    <h1 class="proj-name">Driver Alert System | Robotics</h1>
+                    <h3 class="proj-type">ROBOTICS</h3>
+                    <h1 class="proj-name">Driver Alert System</h1>
                     <p class="proj-desc">Designed and implemented a program in Python to alert a drowsy driver when their eyes are closed by spraying them with water.</p>
                     <button class="proj-btn">View Project</button>
                 </div>
@@ -108,10 +110,13 @@
                     <ul>
                         <li>
                             <div class="timeline-content">
-                                <h3 class="date">Date</h3>
-                                <h1>work 1</h1>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora ab laudantium voluptatibus aut eos placeat laborum, quibusdam exercitationem labore
-                                    se se 
+                                <h3 class="date">May - Aug 2019</h3>
+                                <h2>Veeva Systems</h2>
+                                <h1>QA Engineering</h1>
+                                <p>Engaged in the testing of new products at Veeva Systems, including
+                                    testing new features, developing test strategies and test cases, regression
+                                    testing, UI testing, API testing using Postman, and reporting bugs/stories
+                                     on Jira/Confluence as part of the Network-Integration QA team
                                 </p>
                             </div>
                         </li>
