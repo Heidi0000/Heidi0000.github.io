@@ -2,13 +2,36 @@
 <html>
     <head> 
         <meta charset="utf-8" />
-        <title>Page Title</title>
+        <meta name="description" content="someseom someosem">
+        <title>🐨 Page Title</title>
         <link rel="stylesheet" href="styles.css">
+
         <script>
+            // function scrollFunction(thing, n){
+            //     var elmnt = document.getElementsByClassName(thing)[n];
+            //     elmnt.scrollIntoView({top: 10, behavior: 'smooth'});
+            // }
             function scrollFunction(thing, n){
                 var elmnt = document.getElementsByClassName(thing)[n];
-                elmnt.scrollIntoView({behavior: 'smooth'});
+                var elementPosition = elmnt.getBoundingClientRect().top;
+                var some = elementPosition  - 60;
+                window.scrollTo({top: some, behavior: 'smooth'});
             }
+
+            // var prevScrollpos = window.pageYOffset;
+            // window.onscroll = function() {
+            // var currentScrollPos = window.pageYOffset;
+            // if (prevScrollpos > currentScrollPos) {
+            //     document.getElementByClassName("nav-wrapper")[1].style.top = "0";
+            // } else {
+            //     document.getElementByClassName("nav-wrapper")[1].style.top = "-50px";
+            // }
+            // prevScrollpos = currentScrollPos;
+            // }
+
+
+
+           
         </script>
     </head>
 
@@ -28,6 +51,7 @@
                     </div>
                     <div class="nav-link-wrapper">
                         <!--<a href="timeline-containter">Projects</a>-->
+                        <!-- <button onclick="scrollFunction('title-class', 0)">Projects</button> -->
                         <button onclick="scrollFunction('title-class', 0)">Projects</button>
                     </div>
                     <div class="nav-link-wrapper">
@@ -35,7 +59,7 @@
                         <button onclick="scrollFunction('title-class', 1)">Experiences</button>
                     </div>
                     <div class="nav-link-wrapper">
-                        <button onclick="scrollFunction('timeline-container')">Contact</a>
+                        <button onclick="scrollFunction('title-class', 2)">Contact</a>
                     </div>
                     <!-- <div class="nav-link-wrapper">
                         <a> | </a>
@@ -46,10 +70,11 @@
                     </div>
 
                 </div>
+
             </div>
             
-
             <div class="me-description-wrapper">
+                <div id="me-for-navbar"></div>
                 <div class="about-me-left">
                     <div class="myName">
                         Heidi Han
@@ -68,6 +93,7 @@
             </div>
 
             <!--projects section?-->
+            <div id="proj-for-navbar"></div>
             <p class="title-class">
                 <span class="section-title">
                     Projects
@@ -77,27 +103,38 @@
             <div class="section-underline"></div>
             <div class="proj-wrapper-grid">
                 <div class="proj-container">
-                    <img src="images/sleepyBilly.jpg" alt="Project 1" style="object-fit: cover;width:100%; height:40%">
+                    <img src="images/mockup.png" alt="Project 1" style="object-fit: cover;width:100%; height:40%">
                     <h3 class="proj-type">ROBOTICS</h3>
                     <h1 class="proj-name">Driver Alert System</h1>
-                    <p class="proj-desc">Designed and implemented a program in Python to alert a drowsy driver when their eyes are closed by spraying them with water.</p>
-                    <button class="proj-btn">View Project</button>
+                    <p class="proj-desc">Wake up a dosing driver with cold water!</p>
+                    <button class="proj-btn"><a href="driverAlertSystem.html"> View Project</a></button>
                 </div>
                 <div class="proj-container">
                     <img src="images/sleepyBilly.jpg" alt="Project 1" style="object-fit: cover;width:100%; height:40%">
                     <h1 class="proj-name">project1</h1>
                     <p class="proj-desc">descriptionnnn</p>
-                    <button class="proj-btn">View Project</button>
+                    <button class="proj-btn"><a href="driverAlertSystem.html"> View Project</a></button>
+                </div>
+                <div class="proj-container">
+                    <img src="images/bark_mockup.png" alt="Project 1" style="object-fit: cover;width:100%; height:40%">
+                    <h3 class="proj-type">DESIGN</h3>
+                    <h1 class="proj-name">Onboarding Process for BARK</h1>
+                    <p class="proj-desc">Designing an onboarding process for a smart dog collar app</p>
+                    <button class="proj-btn"><a href="dogCollarDesign.html"> View Project</a></button>
                 </div>
                 <div class="proj-container">
                     <img src="images/sleepyBilly.jpg" alt="Project 1" style="object-fit: cover;width:100%; height:40%">
-                    <h1 class="proj-name">project1</h1>
-                    <p class="proj-desc">descriptionnnn</p>
-                    <button class="proj-btn">View Project</button>
-                </div>       
+                    <h3 class="proj-type">DESIGN</h3>
+                    <h1 class="proj-name">MoodyMini</h1>
+                    <p class="proj-desc">A friendly chatbot that cares about your well-being</p>
+                    <button class="proj-btn"><a href="driverAlertSystem.html"> View Project</a></button>
+                </div>      
             </div>
             <!-- experience-->
+            <div id="work-for-navbar"></div>
+
             <p class="title-class">
+
                 <span class="section-title">
                     Experiences
                 </span>
@@ -108,6 +145,45 @@
             <div class="timeline-container">
                 <div class="timeline">
                     <ul>
+                        <li>
+                            
+                            <div class="timeline-content">
+                                <h3 class="date">May - Aug 2021</h3>
+                                <h2>#OpenToWork</h2>
+                                <h1>Currently looking for a coop position for Summer 2021!</h1>
+                                <!-- <p>Engaged in the testing of new products at Veeva Systems, including
+                                    testing new features, developing test strategies and test cases, regression
+                                    testing, UI testing, API testing using Postman, and reporting bugs/stories
+                                     on Jira/Confluence as part of the Network-Integration QA team
+                                </p> -->
+                            </div>
+                        </li>
+                        <li>
+                            
+                            <div class="timeline-content">
+                                <h3 class="date">Sept - Dec 2020</h3>
+                                <h2>Ford Motor Company</h2>
+                                <h1>Software Infrastructure</h1>
+                                <p>Engaged in the testing of new products at Veeva Systems, including
+                                    testing new features, developing test strategies and test cases, regression
+                                    testing, UI testing, API testing using Postman, and reporting bugs/stories
+                                     on Jira/Confluence as part of the Network-Integration QA team
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timeline-content">
+                                <h3 class="date">Jan - Apr 2020</h3>
+                                <h2>Edgewise Robotics - Ontario Die International</h2>
+                                <h1>Robotics Testing & Modelling Engineering</h1>
+                                <p>Coordinated the testing of an R&D robot while working on software side projects including writing Python scripts to
+                                    increase efficiency of testing, add additional features using C++ and ROS, 
+                                    and fix design and implement changes to the GUI using Qt and QML
+                                    
+                                    
+                                </p>
+                            </div>
+                        </li>
                         <li>
                             <div class="timeline-content">
                                 <h3 class="date">May - Aug 2019</h3>
@@ -120,36 +196,49 @@
                                 </p>
                             </div>
                         </li>
-                        <li>
-                            <div class="timeline-content">
-                                <h3 class="date">Date2s</h3>
-                                <h1>work 2</h1>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora ab laudantium voluptatibus aut eos placeat laborum, quibusdam exercitationem labore
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-content">
-                                <h1 class="date">Date</h1>
-                                <h1>work 3</h1>
-                                <p>somesomesoemsom soeesomesmes eosmoesmseomoes mesomoes
-                                    se se 
-                                </p>
-                            </div>
-                        </li>
-                        <li>
+                        <!-- <li>
                             <div class="timeline-content">
                                 <h1 class="date">Date</h1>
                                 <h1>work 4</h1>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora ab laudantium voluptatibus aut eos placeat laborum, quibusdam exercitationem labore
                                 </p>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
-            
-
+            <div id="some"></div>
+            <!-- contact-->
+            <p class="title-class">
+                <span class="section-title">
+                    Contact
+                </span>
+            </p>
+            <div class="contact-container">
+                <div id="contact-box">
+                    <ul>
+                        <li>
+                            <img src="images/direct-download.png" alt="Project 1" style="object-fit: cover;width:1.1rem; height:1.1rem; position: relative;  margin: 15px">
+                            <h1>  d55han@uwaterloo.ca</h1>
+                        </li>
+                        <li>
+                            <img src="images/direct-download.png" alt="Project 1" style="object-fit: cover;width:1.1rem; height:1.1rem; position: relative;margin: 15px">
+                            <h1>linkedin.com/in/heidi0000</h1>
+                        </li>
+                        <li>
+                            <img src="images/direct-download.png" alt="Project 1" style="object-fit: cover;width:1.1rem; height:1.1rem; position: relative;margin: 15px">
+                            <h1>github.com/Heidi0000
+                            </h1>
+                        </li>
+                        <li>
+                            <img src="images/direct-download.png" alt="Project 1" style="object-fit: cover;width:1.1rem; height:1.1rem; position: relative;margin: 15px">
+                            <h1>647</h1>
+                        </li>
+                    </ul>
+                </div>
+                
+                
+            </div>
         </div>
     </body>
 </html>
