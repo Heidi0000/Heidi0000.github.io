@@ -24,7 +24,7 @@
 
         <div class="right-side">
             <div class="nav-link-wrapper">
-                <button onclick="window.location.href='index.html'">About</button>
+                <button onclick="window.location.href='index.html'">Home</button>
             </div>
             <div class="nav-link-wrapper">
                 <!--<a href="timeline-containter">Projects</a>-->
@@ -41,6 +41,9 @@
                 <a> | </a>
             </div> -->
             <div class="nav-link-wrapper">
+                <button onclick="window.location.href='moreaboutme.html'">About Me</button>
+            </div>
+            <div class="nav-link-wrapper">
                 <button><a href="images/2b_resume_robotics.pdf" download >Resume</a></button>
                 <!-- <img src="images/direct-download.png" alt="Project 1" style="object-fit: cover;width:1.1rem; height:1.1rem; position: relative;"> -->
             </div>
@@ -56,13 +59,12 @@
         </h4>
 
         <div class="demo-image-container">
-            <!-- <img class="demo-img" src="images/sleepyBilly.jpg" alt="Project 1" style="object-fit: cover;width:100%; height:10%"> -->
-            <video width="640" height="480" autoplay loop muted>
+            <video width="100%" autoplay loop muted>
                 <source src="images/demo-driver-alert-sys.webm" type="video/webm">
-
             </video>
-                <h6 class="demo-caption">Demo of Driver Alert System</h6>
+            <h6 class="demo-caption">Demo of Driver Alert System</h6>
         </div>
+
         <div class="proj-content-wrapper">
             <h3 class="subheader-proj">Summary</h3>
             <p>The Driver Alert System is a program written in Python to alert a drowsy driver when their eyes are closed.
@@ -79,8 +81,9 @@
                     <li>Qt</li>
                 </ul>
             </div>
-            <h3 class="subheader-proj">Building it ( will finish write up  like today)</h3>
-            <p><strong>1. Detect presence and location of eyes</strong></p>
+            <h3 class="subheader-proj">Building it</h3>
+            <h4 class="design-proj-heading">1. Detect presence and location of eyes</h4>
+
             <p> The first step in this project is using OpenCV to detect faces, more specifically, the eyes, so the 
                 machine can determine if the driver's eyes are closed or not. 
                 Haar cascade is a commonly used object detection method where 
@@ -111,7 +114,8 @@
             </p>
             <br>
             
-            <p>  <strong> 2. Determine if the eyes retrieved from step 1 are closed</strong></p> 
+            <h4 class="design-proj-heading">2. Determine if the eyes retrieved from step 1 are closed</h4>
+
             <p>
                 This part uses Tensorflow and Keras models to determine if the eye images retrieved from the above step
                 are open or closed. To begin this step, first a dataset of open and closed eyes must be collected. 
@@ -128,12 +132,12 @@
                 model = keras.Sequential([
                 <br>&nbsp;&nbsp;&nbsp;&nbsp; keras.layers.Flatten(input_shape=(70,70)),
                 <br>&nbsp;&nbsp;&nbsp;&nbsp; keras.layers.Dense(128, activation='relu'),
-                <br>&nbsp;&nbsp;&nbsp;&nbsp; keras.layers.Dense(2)
-            ])
+                <br>&nbsp;&nbsp;&nbsp;&nbsp; keras.layers.Dense(2)])
             </p>
             <p>
-                The next step is to compile the model. This part was done using a few functions:
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;• loss function -measures the accuracy of the model furing training, we want to minimize this function and it will "steer" the model in the right direction
+                The next step is to compile the model. This part is done using a few functions:
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;• loss function -measures the accuracy of the model during training, 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; •we want to minimize this function and it will "steer" the model in the right direction
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;•  optimizer - how the model is updated based on the data it sees and the loss function
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;•  metrics - monitors the training and testing steps
 
@@ -155,9 +159,14 @@
             <p>Now moving on to the testing part, the accuracy is evaluated by trying the model on a test set:</p>
             <p class="code">    test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
             </p>
-            <p>And finally, the model is now ready to be used.</p>
+            <p>And finally, the model is now ready to be used. To used this model, once the image to be classified is 
+                inputted, the output will be an array of predictions, where the predictions are  the confidence levels
+                 of the image being the thing at the index. For instance, if returned an array of [0.9 0.2], where index 0 
+                 is for closed eye and 1 is open, then there is a 90 percent chance that the inputted image is a closed eye.
+            </p>
 
-            <p><strong> 3. Put them together in a nice GUI!</strong></p>
+            <h4 class="design-proj-heading">3. Put them together in a nice GUI!</h4>
+
             <p> This part was done using PyQt5. First, in order to display a live stream of the webcam, 
                 a multi threaded program was required, as otherwise the GUI would keep freezing and not be able
                 to keep up with the work it must do. So a main loop was established, inheriting from QWidget, then

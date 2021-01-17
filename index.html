@@ -3,7 +3,7 @@
     <head> 
         <meta charset="utf-8" />
         <meta name="description" content="someseom someosem">
-        <title>🐨 Page Title</title>
+        <title>Heidi Han's site</title>
         <link rel="stylesheet" href="styles.css">
         <!--for the icons-->
         <script src="https://kit.fontawesome.com/69fa28cb17.js" crossorigin="anonymous"></script>
@@ -30,10 +30,6 @@
             // }
             // prevScrollpos = currentScrollPos;
             // }
-
-
-
-           
         </script>
         <script>
 
@@ -67,7 +63,7 @@
 
                 <div class="right-side">
                     <div class="nav-link-wrapper">
-                        <button onclick="scrollFunction('me-description-wrapper', 0)">About</a>
+                        <button onclick="scrollFunction('me-description-wrapper', 0)">Home</a>
                     </div>
                     <div class="nav-link-wrapper">
                         <!--<a href="timeline-containter">Projects</a>-->
@@ -81,9 +77,9 @@
                     <div class="nav-link-wrapper">
                         <button onclick="scrollFunction('contact-container', 0)">Contact</a>
                     </div>
-                    <!-- <div class="nav-link-wrapper">
-                        <a> | </a>
-                    </div> -->
+                    <div class="nav-link-wrapper">
+                        <button onclick="window.location.href='moreaboutme.html'">About Me</button>
+                    </div>
                     <div class="nav-link-wrapper">
                         <button><a href="images/2b_resume_robotics.pdf" download >Resume</a></button>
                         <!-- <img src="images/direct-download.png" alt="Project 1" style="object-fit: cover;width:1.1rem; height:1.1rem; position: relative;"> -->
@@ -103,7 +99,7 @@
                     <div class="greeting">
                         <p>Hi! I am a third year engineering student at the University of Waterloo with a passion for coding and designing!
                         </p>
-                        <p>                            (change this....)
+                        <p>                       
                         </p>
                     </div>
                 </div>
@@ -131,13 +127,7 @@
                     <p class="proj-desc">Wake up a dosing driver with cold water!</p>
                     <button class="proj-btn"><a href="driverAlertSystem.html"> View Project</a></button>
                 </div>
-                <div class="proj-container">
-                    <img src="images/sleepyBilly.jpg" alt="Project 1" style="object-fit: cover;width:100%; height:40%">
-                    <h3 class="proj-type">ROBOTICS</h3>
-                    <h1 class="proj-name">Turret Surveillence System</h1>
-                    <p class="proj-desc">Motion detecting surveillence system made to shoot elastic bands</p>
-                    <button class="proj-btn"><a href="turretSystem.html"> View Project</a></button>
-                </div>
+                
                 <div class="proj-container">
                     <img src="images/bark_mockup.png" alt="Project 1" style="object-fit: cover;width:100%; height:40%">
                     <h3 class="proj-type">DESIGN</h3>
@@ -146,12 +136,20 @@
                     <button class="proj-btn"><a href="dogCollarDesign.html"> View Project</a></button>
                 </div>
                 <div class="proj-container">
-                    <img src="images/sleepyBilly.jpg" alt="Project 1" style="object-fit: cover;width:100%; height:40%">
+                    <img src="images/moodyminimockup.jpg" alt="Project 1" style="object-fit: cover;width:100%; height:40%">
                     <h3 class="proj-type">DESIGN</h3>
                     <h1 class="proj-name">MoodyMini</h1>
                     <p class="proj-desc">A friendly chatbot that cares about your well-being</p>
-                    <button class="proj-btn"><a href="moodymini.html"> View Project</a></button>
-                </div>      
+                    <!-- <p class="proj-desc">Coming Soon</p> -->
+                    <button class="proj-btn"><a href="https://devpost.com/software/moodymini"> View Project</a></button>
+                </div>  
+                <div class="proj-container">
+                    <img src="images/turretPic.jpg" alt="Project 1" style="object-fit: cover;width:100%; height:40%">
+                    <h3 class="proj-type">ROBOTICS</h3>
+                    <h1 class="proj-name">Turret Surveillence System</h1>
+                    <p class="proj-desc">Motion detecting surveillence system made to shoot elastic bands</p>
+                    <button class="proj-btn"><a href="https://github.com/ih4kim/Turret_Surveillance_System"> View Project</a></button>
+                </div>    
             </div>
             <!-- experience-->
             <div id="work-for-navbar"></div>
@@ -175,10 +173,12 @@
                                 <h3 class="date">Sept - Dec 2020</h3>
                                 <h2>Ford Motor Company</h2>
                                 <h1>Software Infrastructure</h1>
-                                <p>Engaged in the testing of new products at Veeva Systems, including
-                                    testing new features, developing test strategies and test cases, regression
-                                    testing, UI testing, API testing using Postman, and reporting bugs/stories
-                                     on Jira/Confluence as part of the Network-Integration QA team
+                                <p>• Designed and implemented bug fixes and stories in C++ as part of the
+                                    Application Lifecycle Manager team including code optimization and
+                                    memory management in Ubuntu and QNX virtual environments</p>
+                                <p>• Performed testing, maintenance, and analysis of C++ code using Google
+                                    Test and Mock unit test framework and static code analysis</p>   
+                                  <p> • Gained understanding of database development using SQLite3
                                 </p>
                             </div>
                         </li>
@@ -187,11 +187,10 @@
                                 <h3 class="date">Jan - Apr 2020</h3>
                                 <h2>Edgewise Robotics - Ontario Die International</h2>
                                 <h1>Robotics Testing & Modelling Engineering</h1>
-                                <p>Coordinated the testing of an R&D robot while working on software side projects including writing Python scripts to
-                                    increase efficiency of testing, add additional features using C++ and ROS, 
-                                    and fix design and implement changes to the GUI using Qt and QML
-                                    
-                                    
+                                <p> • Coordinated the testing of an R&D robot while working on software side projects including writing Python scripts to
+                                    increase efficiency of testing, adding new features using C++ and ROS, 
+                                    and fixing the design and implementing changes to the GUI using Qt and QML
+                                                                       
                                 </p>
                             </div>
                         </li>
@@ -200,7 +199,7 @@
                                 <h3 class="date">May - Aug 2019</h3>
                                 <h2>Veeva Systems</h2>
                                 <h1>QA Engineering</h1>
-                                <p>Engaged in the testing of new products at Veeva Systems, including
+                                <p>• Engaged in the testing of new products at Veeva Systems, including
                                     testing new features, developing test strategies and test cases, regression
                                     testing, UI testing, API testing using Postman, and reporting bugs/stories
                                      on Jira/Confluence as part of the Network-Integration QA team
