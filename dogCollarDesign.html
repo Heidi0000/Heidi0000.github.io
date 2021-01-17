@@ -6,7 +6,12 @@
     <title>Onboarding Smart Dog Collar Page</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/69fa28cb17.js" crossorigin="anonymous"></script>
-
+    <script>
+        function scrollFunction(thing, n){
+            var elmnt = document.getElementsByClassName(thing)[n];
+            elmnt.scrollIntoView({top: 10, behavior: 'smooth'});
+        }
+    </script>
 </head>
 <body>
     <!--navigation bar-->
@@ -23,14 +28,14 @@
             </div>
             <div class="nav-link-wrapper">
                 <!--<a href="timeline-containter">Projects</a>-->
-                <button onclick="window.location.href='index.html#proj-for-navbar'">Project</button>
+                <button onclick="window.location.href='index.html#proj-for-navbar'">Projects</button>
             </div>
             <div class="nav-link-wrapper">
                 <!-- <a href="project1.html">Experience</a> -->
                 <button onclick="window.location.href='index.html#work-for-navbar'">Experiences</button>
             </div>
             <div class="nav-link-wrapper">
-                <button onclick="window.location.href='index.html#some'">Contact</a>
+                <button onclick="scrollFunction('contact-container', 0)">Contact</a>
             </div>
             <!-- <div class="nav-link-wrapper">
                 <a> | </a>
