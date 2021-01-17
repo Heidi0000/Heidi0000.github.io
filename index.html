@@ -35,6 +35,23 @@
 
            
         </script>
+        <script>
+
+            var i = 0;
+            var txt = 'HEIDI HAN'; /* The text */
+            var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+            function typeWriter() {
+            if (i < txt.length) {
+                document.getElementById("brand").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+            }
+            window.onload = function() {
+                typeWriter();
+            };
+        </script>
     </head>
 
     <body>
@@ -42,8 +59,9 @@
             <!--navigation bar-->
             <div class="nav-wrapper">
                 <div class="left-side">
-                    <div class="brand">
-                        <div>HEIDI HAN</div>
+                    <div id="brandd">
+                        <div id="brand"></div>
+                        <!-- or just put heidi han here -->
                     </div>
                 </div>
 
@@ -146,19 +164,7 @@
             <div class="timeline-container">
                 <div class="timeline">
                     <ul>
-                        <li>
-                            
-                            <div class="timeline-content">
-                                <h3 class="date">May - Aug 2021</h3>
-                                <h2>#OpenToWork</h2>
-                                <h1>Currently looking for a coop position for Summer 2021!</h1>
-                                <!-- <p>Engaged in the testing of new products at Veeva Systems, including
-                                    testing new features, developing test strategies and test cases, regression
-                                    testing, UI testing, API testing using Postman, and reporting bugs/stories
-                                     on Jira/Confluence as part of the Network-Integration QA team
-                                </p> -->
-                            </div>
-                        </li>
+                    
                         <li>
                             
                             <div class="timeline-content">
