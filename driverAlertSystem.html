@@ -80,15 +80,83 @@
                 </ul>
             </div>
             <h3 class="subheader-proj">Building it ( will finish write up  like today)</h3>
-            <p><strong>1. Detect if there is a face and create an ROI around the eyes</strong></p>
-            <p> This was done using Haar Cascade in OpenCV. More on this..</p>
-            <p>  <strong> 2. Determing if the eyes retrieved from step 1 are closed</strong></p> 
-            <p>  First we need to collect a dataset of open and closed eyes. For this project, 30 000 images of open and closed eyes were collected from <u>link</u>. 
-                20000 of these were used for training and 10000 were used for the testing. 
-                The images should first be modified in a way that they are all consistent in terms of sizing, so do that. 
-                Then create layers. Then compile the model. Then test. Using this model, we can determine if the eyes (both, one, or none) are closed.
-                More on this coming...
-            </p>  
+            <p><strong>1. Detect presence and location of eyes</strong></p>
+            <p> The first step in this project is using OpenCV to detect faces, more specifically, the eyes, so the 
+                machine can determine if the driver's eyes are closed or not. 
+                Haar cascade is a commonly used object detection method where 
+                a cascade function is trained from a lot of positive and negative images.
+                Typically, if one wants to train their own classifier for specific objects, 
+                that can be done, but in our case, OpenCV already contained pre-trained classifiers for the face and eyes. 
+                To use these classifiers, simply load it. 
+            </p>
+            <p class="code">  face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+                <br> eye_cascade = cv2.CascadeClassifier('haarcascade_lefteye_2splits.xml')
+            </p>
+            <p>
+                Once the classifiers are loaded, we can then use the detectMultiScale function to detect the face/eye, 
+                which is going to return the position of the face as a rectangle (Rect(x, y, w, h)). With these points, we can then 
+                create an ROI (region of interest or bounding box) around the eyes.
+            </p>
+            <p class="code">
+                faces = face_cascade.detectMultiScale(image, 1.3, 5)
+                <br>roi_eyes = [] 
+                <br>for (x,y,w,h) in faces:
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;   roi_gray = image[y:y+h, x:x+w]
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;   roi_color = image[y:y+h, x:x+w]
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;   eyes = eye_cascade.detectMultiScale(roi_gray)
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;    dsize = (80,80)
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;    for (ex, ey, ew, eh) in eyes:
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        resolutionImage = cv2.resize(roi_gray[ey:ey+eh, ex:ex+ew], dsize, interpolation = cv2.INTER_AREA)
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        roi_eyes.append(resolutionImage)  
+            </p>
+            <br>
+            
+            <p>  <strong> 2. Determine if the eyes retrieved from step 1 are closed</strong></p> 
+            <p>
+                This part uses Tensorflow and Keras models to determine if the eye images retrieved from the above step
+                are open or closed. To begin this step, first a dataset of open and closed eyes must be collected. 
+                For this project, 30,000 images of open and closed eyees were collected from <a href=" http://mrl.cs.vsb.cz/eyedataset">here</a>. 
+                20,000 of these were used for the training, and 10,000 were used for testing. 
+            </p>
+            <p>After some pre-processing of the images, layers must be set up. Layers are the basic building blocks of neural networks in Keras.
+                A layer consists of a tensor-in tensor-out computation function and some state. Most layers have some parameters which are learned
+                during the training. For this project, 3 layers were used: 1 flatten and 2 dense layers. The flattening layer takes a 2d array of pixels 
+                and unstacks the rows into a 1d array and was used for data reformatting purposes. The densing layers return an array with length of 
+                num_nodes, which is a parameter passed in. 
+            </p>
+            <p class="code">  
+                model = keras.Sequential([
+                <br>&nbsp;&nbsp;&nbsp;&nbsp; keras.layers.Flatten(input_shape=(70,70)),
+                <br>&nbsp;&nbsp;&nbsp;&nbsp; keras.layers.Dense(128, activation='relu'),
+                <br>&nbsp;&nbsp;&nbsp;&nbsp; keras.layers.Dense(2)
+            ])
+            </p>
+            <p>
+                The next step is to compile the model. This part was done using a few functions:
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;• loss function -measures the accuracy of the model furing training, we want to minimize this function and it will "steer" the model in the right direction
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;•  optimizer - how the model is updated based on the data it sees and the loss function
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;•  metrics - monitors the training and testing steps
+
+            </p>
+            <p class="code">    model.compile(optimizer='adam', #adam is some algorithm
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;metrics=['accuracy'])
+            </p>
+            <p>
+                Then comes the training of the model. This is done in one line, in four steps:
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;     1. feed the training data (train_images and train_labels) into the model
+                 <br>&nbsp;&nbsp;&nbsp;&nbsp;   2. model will learn to associate images and labels
+                   <br> &nbsp;&nbsp;&nbsp;&nbsp;        3. ask the model to make predictions about a test set (test_images)
+                  <br>&nbsp;&nbsp;&nbsp;&nbsp;  4. check that the predictions match the test_labels
+            </p>
+            <p class="code">    model.fit(train_images, train_labels, epochs=10)
+            </p>
+            <p>With every epoch, the loss/accuracy should improve (decrease/increase).</p>
+            <p>Now moving on to the testing part, the accuracy is evaluated by trying the model on a test set:</p>
+            <p class="code">    test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
+            </p>
+            <p>And finally, the model is now ready to be used.</p>
+
             <p><strong> 3. Put them together in a nice GUI!</strong></p>
             <p> This part was done using PyQt5. First, in order to display a live stream of the webcam, 
                 a multi threaded program was required, as otherwise the GUI would keep freezing and not be able
