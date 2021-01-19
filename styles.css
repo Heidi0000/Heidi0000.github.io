@@ -634,7 +634,8 @@ a{
     } 
     .proj-page-wrapper{
         /* background-color: green; */
-        margin: 100px 250px 250px 250px;    
+        /* margin: 100px 250px 250px 250px;     */
+        margin: 6% 12% 6% 12% ;
     }
     
 
@@ -752,6 +753,11 @@ a{
         background-color: #faec9c;
     
     }
+    .about-me-page-wrapper{
+        /* background-color: red; */
+        /* padding: 200px 500px 200px 500px; */
+        padding: 10% 25% 12% 25%;
+    }
 }
 
 
@@ -862,10 +868,7 @@ a{
         margin-left: 80px !important;
 }
 
-.about-me-page-wrapper{
-    /* background-color: red; */
-    padding: 200px 500px 200px 500px;
-}
+
 .about-me-page-name{
     font-size: 50px;
     font-family: lora;
