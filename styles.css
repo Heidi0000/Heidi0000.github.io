@@ -700,6 +700,10 @@ a{
         margin: 100px;
         /* background-color: yellowgreen; */
     }
+    .linkk{
+        text-decoration: underline;
+            color: #65b3b3;
+    }
     .subheader-proj{    
         /* background-color: skyblue; */
 
