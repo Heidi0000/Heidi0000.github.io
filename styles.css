@@ -37,6 +37,7 @@ a{
 html {
     scroll-behavior: smooth;
   }
+  
 .nav-wrapper{
     display: flex;
     justify-content: space-between;
@@ -113,6 +114,7 @@ html {
     border: none;
     outline: none;
     text-align: center;
+    cursor: pointer;
 }
 .view-work button i{
     transition: color 0.3s;
@@ -444,21 +446,15 @@ html {
 }
 
 .contact-container li{
-    /* display: inline; */
     margin-right: 5px;
     position: relative;
 
 }
 .contact-container ul{
     list-style-type: none;
-    /* margin-right: 0px; */
-    /* padding: 0; */
-    /* display: inline; */
-    /* background-color: gray; */
     float: right;
     padding-inline-start: 0px;
     margin-block-start:0px;margin-block-end: 0px;
-    /* position: absolute; */
     top: 50%;
     transform: translateY(-10%);
     height: 40px;
@@ -621,7 +617,109 @@ html {
     text-decoration: underline;
         color: #65b3b3;
 }
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    height: 60px;
+    /* justify-content: space-around; */
+    align-items: center;
+    /* min-height: 8vh; */
+    /* background-color: #5D4954; */
+    font-family:sourceSans;
+    z-index: 1;
+    /* padding: 0.8rem; */
+    border-bottom: 0.5px solid transparent;
+    background-color:rgb(252, 249, 249);
+    opacity: 0.9;
+    font-weight: lighter;
+
+}
+.logo p{
+    margin-left:10px ;
+    font-size: 1.5em;
+    font-family: sourceSans;
+   font-weight: lighter;
+}
+.nav-linkss {
+    position: fixed;
+    right: 0px;
+    height: 100%;
+    top: 60px;
+    margin-top: 0px;
+    /* margin-bottom: 50px; */
+    background-color: rgb(252, 249, 249);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 30%; */
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+}
+
+.nav-linkss li {
+    list-style: none;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    font-family: sourceSans;
+    margin-right: 10px;
+    font-weight: light;
+    /* margin-bottom: 50px; */
+}
+.nav-linkss button {
+    list-style: none;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    font-family: sourceSans;
+    margin-right: 10px;
+    font-weight: light;
+    color:#8a8a8a;
+    outline: none;
+}
+
+.nav-linkss a {
+    color: #8a8a8a;
+    text-decoration: none;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #8a8a8a;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+.burger {
+    display: block;
+    cursor: pointer;            
+    margin-left: auto; 
+    margin-right: 50px;
+}
+.nav-active {
+    transform: translateX(0%);
+}
 @media only screen and (min-width: 768px){
+    .nav-linkss {
+        display: flex !important;
+        justify-content: space-around;
+        /* width: 40%; */
+        flex-direction: row;
+        top: 0;
+        height: 60px;
+        /* margin: auto; */
+        margin-right: 10px;
+        transform: translateX(0%) ;
+        transition: none;
+        background-color:rgb(252, 249, 249) ;
+        /* margin-bottom: auto; */
+    }
+    
+    
+    .burger {
+        display: none;
+    }
     .proj-wrapper-grid{
         grid-template-columns: repeat(4, 1fr);
         max-width: 1100px;
