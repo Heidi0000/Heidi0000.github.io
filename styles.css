@@ -259,11 +259,12 @@ a{
     position:relative;
     overflow: hidden;
     background-color: white;
-    height:21rem;
-    border-radius: 5px;
+    height:20rem;
+    border-radius: 10px;
     /* outline: rgb(241, 241, 241);
     outline-style: solid; */
     border: rgb(241, 241, 241) solid 1px;
+    box-shadow: 0px 2px 8px 0px  #e0e0e0;
 
 }
 
@@ -360,6 +361,8 @@ a{
     list-style: none; /*remove the bullet points*/
 }
 .timeline ul li{
+    /* box-shadow: 0px 2px 8px 0px  #e0e0e0; */
+
     padding: 20px;
     background-color: #FEF1AB;
     color: black;
