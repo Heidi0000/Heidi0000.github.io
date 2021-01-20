@@ -136,15 +136,47 @@ a{
 }
 */
 /*about me section*/
-.me-description-wrapper{
-    display: inline-flex;
-    padding-top: 15rem;
-    padding-bottom: 200px;
+.myNameSome{
+        font-size: 50px;
+        font-family: lora;
+        text-shadow:
+        -2px -2px white,
+        -2px 2px white,
+        2px -2px white,
+        2px 2px white;
+        background-size: 1px 1em;
+        box-shadow:
+          inset 0 -0.1em rgb(255, 221, 30),
+          inset 0 -1em white;
+        display: inline;
+    
     
 }
+.me-description-wrapper{
+    /* display: inline-flex; */
+    padding-top:19%;
+    padding-bottom: 17%;
+    /* background-color: red; */
+}
+.me-descc{
+    font-size: 25px !important;
+    margin-left: 100px;
+    text-align: right;
+}
 .about-me-left{
-    margin-top: 5rem;
-    width:50%;
+    /* margin-top: 6rem; */
+    width:40%;
+    margin: auto;
+    padding-right: 100px;
+    text-align: right;
+}
+.about-me-left p{
+    font-size: 55px;
+    font-family: lora;
+    display: inline;
+    color: #686868;
+
+
 }
 .about-me-right{
     width:50%;
@@ -152,26 +184,29 @@ a{
 .myName{
     font-size: 50px;
     font-family: lora;
-    text-align: right;
-    padding-right:10%;
+    /* text-align: right; */
+    /* padding-right:10%; */
+    text-decoration: underline;
+    text-decoration-color:  rgb(255, 221, 30);
+    color: black !important;
 }
 .greeting{
     margin-top: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    font-size:10px !important;
     text-align: right;
     padding-right:10%;
     padding-left: 50%;
 }
-.small-underline{
+/* .small-underline{
     /*background-color: rgb(255, 221, 30);*/
-    background: linear-gradient(110deg, rgb(255, 221, 30) 70%, #fffdef 60%);
+    /* background: linear-gradient(110deg, rgb(255, 221, 30) 70%, #fffdef 60%);
     height:3px;
-    width:200px;
+    width:200px; */
    
-    float:right;
-    padding-block: 01px;
-}
+    /* float:right; */
+    /* padding-block: 01px; */
+/* } *//
 .me-pic{
     height: 25rem;
     width: 50%;

@@ -95,6 +95,7 @@
             <p class="code">  face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
                 <br> eye_cascade = cv2.CascadeClassifier('haarcascade_lefteye_2splits.xml')
             </p>
+            <br>
             <p>
                 Once the classifiers are loaded, we can then use the detectMultiScale function to detect the face/eye, 
                 which is going to return the position of the face as a rectangle (Rect(x, y, w, h)). With these points, we can then 
@@ -119,8 +120,8 @@
             <p>
                 This part uses Tensorflow and Keras models to determine if the eye images retrieved from the above step
                 are open or closed. To begin this step, first a dataset of open and closed eyes must be collected. 
-                For this project, 30,000 images of open and closed eyees were collected from <a class="linkk" href=" http://mrl.cs.vsb.cz/eyedataset">here</a>. 
-                20,000 of these were used for the training, and 10,000 were used for testing. 
+                For this project, 30,000 images of open and closed eyes were collected from <a class="linkk" href=" http://mrl.cs.vsb.cz/eyedataset">here</a>. 
+                20,000 of these images were used for the training, and 10,000 were used for testing. 
             </p>
             <p>After some pre-processing of the images, layers must be set up. Layers are the basic building blocks of neural networks in Keras.
                 A layer consists of a tensor-in tensor-out computation function and some state. Most layers have some parameters which are learned
@@ -134,48 +135,72 @@
                 <br>&nbsp;&nbsp;&nbsp;&nbsp; keras.layers.Dense(128, activation='relu'),
                 <br>&nbsp;&nbsp;&nbsp;&nbsp; keras.layers.Dense(2)])
             </p>
+            <br>
             <p>
                 The next step is to compile the model. This part is done using a few functions:
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;• loss function -measures the accuracy of the model during training, 
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; •we want to minimize this function and it will "steer" the model in the right direction
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;•  optimizer - how the model is updated based on the data it sees and the loss function
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;•  metrics - monitors the training and testing steps
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;• Loss function -measures the accuracy of the model during training. We want to minimize this function and it will "steer" the model in the right direction.
+                <!-- <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; •We want to minimize this function and it will "steer" the model in the right direction -->
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;•  Optimizer - how the model is updated based on the data it sees and the loss function.
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;•  Metrics - monitors the training and testing steps.
 
             </p>
             <p class="code">    model.compile(optimizer='adam', #adam is some algorithm
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), 
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;metrics=['accuracy'])
             </p>
+            <br>
             <p>
                 Then comes the training of the model. This is done in one line, in four steps:
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;     1. feed the training data (train_images and train_labels) into the model
-                 <br>&nbsp;&nbsp;&nbsp;&nbsp;   2. model will learn to associate images and labels
-                   <br> &nbsp;&nbsp;&nbsp;&nbsp;        3. ask the model to make predictions about a test set (test_images)
-                  <br>&nbsp;&nbsp;&nbsp;&nbsp;  4. check that the predictions match the test_labels
+                <br>&nbsp;&nbsp;&nbsp;&nbsp; 1. Feed the training data (train_images and train_labels) into the model.
+                <br>&nbsp;&nbsp;&nbsp;&nbsp; 2. Model will learn to associate images and labels.
+                <br>&nbsp;&nbsp;&nbsp;&nbsp; 3. Ask the model to make predictions about a test set (test_images).
+                <br>&nbsp;&nbsp;&nbsp;&nbsp; 4. Check that the predictions match the test_labels.
             </p>
             <p class="code">    model.fit(train_images, train_labels, epochs=10)
             </p>
             <p>With every epoch, the loss/accuracy should improve (decrease/increase).</p>
+            <br>
             <p>Now moving on to the testing part, the accuracy is evaluated by trying the model on a test set:</p>
             <p class="code">    test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
             </p>
+            <br>
             <p>And finally, the model is now ready to be used. To used this model, once the image to be classified is 
                 inputted, the output will be an array of predictions, where the predictions are  the confidence levels
                  of the image being the thing at the index. For instance, if returned an array of [0.9 0.2], where index 0 
                  is for closed eye and 1 is open, then there is a 90 percent chance that the inputted image is a closed eye.
             </p>
 
-            <h4 class="design-proj-heading">3. Put them together in a nice GUI!</h4>
+            <h4 class="design-proj-heading">3. Put them together in a nice GUI</h4>
 
-            <p> This part was done using PyQt5. First, in order to display a live stream of the webcam, 
-                a multi threaded program was required, as otherwise the GUI would keep freezing and not be able
-                to keep up with the work it must do. So a main loop was established, inheriting from QWidget, then
-                the worker thread was created. The main loop was responsible 
-                The next step then was to add in the machine learning step. This was done in the worker thread, where 
-                it would take each frame and determine if the eyes are closed or not, and then emit a signal to the main thread.
+            <p> This part is done using PyQt5. Two main topics covered in this step are multithreading and signals & slots. </p>
+            <p>
+            In order to display a live stream of the webcam, 
+                a multi threaded program is required, as otherwise the GUI would keep freezing and not be able
+                to keep up with the work it must do with a single thread. 
+                Usually with GUI programming, we have a main thread (or the GUI thread) and a worker thread. 
+                The main thread is responsible for creating the display of the GUI by creating widgets and layouts and other things required for a GUI 
+                while the worker thread takes care of the other processing work/blocking calls. 
+                In our project, we have a MainWindow class and a Thread class to act as the main loop and the worker loop respectively. 
+                In our case the Thread class deals with taking the stream of frames from the webcam, 
+                isolates the eyes (step 1) and uses the model to determine if the eyes are closed or not (step 2). 
+                It also takes care of everything else in between, like converting the frames to a PyQt compatible format.
             </p>
-            <div class="proj-bottom-container"> 
-                <button class="view-proj-code-btn"><a href="https://github.com/ih4kim/DriverAlertSystem">View code in Github</a></button>
+            <p>
+                Once these roles are established, we now need a method for these objects to communicate with each other. This is where signals and slots come in. 
+                When a signal is emitted, the connected slot, which is a function, gets called.
+                When emitting a signal, parameters can be included in the emit function, which then can get used in the slot function.
+                In our case, this mechanism is used for two purposes: 1) to emit a signal from the worker thread with the frame from the webcam as a parameter
+                so that the frames can be displayed on the GUI in the main thread 
+                and 2) to emit a signal when the worker thread detects that the eyes are closed/opened so that the state of the eyes can be displayed on the GUI.
+            </p>
+
+                
+            <br><br><br>
+
+            <div class="proj-bottom-container">
+                <p>View code in <a class="linkk" href="https://github.com/ih4kim/DriverAlertSystem"> GitHub</a>.</p>
+ 
+                <!-- <button class="view-proj-code-btn"><a href="https://github.com/ih4kim/DriverAlertSystem">View code in Github</a></button> -->
             </div>
                 
         </div>
