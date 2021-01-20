@@ -678,7 +678,9 @@ nav {
     color:#8a8a8a;
     outline: none;
 }
-
+.nav-linkss button:hover{
+    color: black;
+}
 .nav-linkss a {
     color: #8a8a8a;
     text-decoration: none;
@@ -697,6 +699,7 @@ nav {
     margin-left: auto; 
     margin-right: 50px;
 }
+
 .nav-active {
     transform: translateX(0%);
 }
@@ -715,7 +718,20 @@ nav {
         background-color:rgb(252, 249, 249) ;
         /* margin-bottom: auto; */
     }
-    
+    .nav-linkss button{
+        transition: color 0.3s;
+
+    }
+    .nav-linkss a{
+        transition: color 0.3s;
+
+    }
+    .nav-linkss button:hover{
+        color: black;
+    }
+    .nav-linkss a:hover{
+        color: black;
+    }
     
     .burger {
         display: none;
